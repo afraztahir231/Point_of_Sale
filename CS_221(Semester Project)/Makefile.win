@@ -1,0 +1,36 @@
+# Project: CS_221_Semester_Project
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+RES      = CS_221_Semester_Project_private.res
+OBJ      = Point_of_Sale.o fatimaisdumb.o $(RES)
+LINKOBJ  = Point_of_Sale.o fatimaisdumb.o $(RES)
+LIBS     = -L"E:/Softwares/Dev C++ Software/Dev-Cpp/MinGW64/lib" -L"E:/Softwares/Dev C++ Software/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -g3
+INCS     = -I"E:/Softwares/Dev C++ Software/Dev-Cpp/MinGW64/include" -I"E:/Softwares/Dev C++ Software/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"E:/Softwares/Dev C++ Software/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"E:/Softwares/Dev C++ Software/Dev-Cpp/MinGW64/include" -I"E:/Softwares/Dev C++ Software/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"E:/Softwares/Dev C++ Software/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"E:/Softwares/Dev C++ Software/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = CS_221_Semester_Project.exe
+CXXFLAGS = $(CXXINCS) -g3
+CFLAGS   = $(INCS) -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+Point_of_Sale.o: Point_of_Sale.cpp
+	$(CPP) -c Point_of_Sale.cpp -o Point_of_Sale.o $(CXXFLAGS)
+
+fatimaisdumb.o: fatimaisdumb.cpp
+	$(CPP) -c fatimaisdumb.cpp -o fatimaisdumb.o $(CXXFLAGS)
+
+CS_221_Semester_Project_private.res: CS_221_Semester_Project_private.rc 
+	$(WINDRES) -i CS_221_Semester_Project_private.rc --input-format=rc -o CS_221_Semester_Project_private.res -O coff 
+
